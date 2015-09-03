@@ -29,5 +29,7 @@ namespace FinalProject.Web.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<FinalProject.Web.Models.Pest> Pests { get; set; }
     }
 }
