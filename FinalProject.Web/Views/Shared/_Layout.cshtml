@@ -39,6 +39,12 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/bug-min.js"></script>
     @RenderSection("scripts", required: false)
+
+    <script>
+        new BugController();
+        new SpiderController();
+    </script>
 </body>
 </html>
