@@ -13,7 +13,7 @@ namespace FinalProject.Web.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201509021547277_Initial"; }
+            get { return "201509041453250_Initial"; }
         }
         
         string IMigrationMetadata.Source

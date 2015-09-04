@@ -8,12 +8,20 @@ namespace FinalProject.Web.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Bugs",
+                "dbo.Pests",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        BugName = c.String(),
+                        PestName = c.String(),
                         Category = c.Int(nullable: false),
+                        NumberOfLegs = c.Int(nullable: false),
+                        Tail = c.Boolean(nullable: false),
+                        BigAbdomen = c.Boolean(nullable: false),
+                        Hair = c.Boolean(nullable: false),
+                        Color = c.Int(nullable: false),
+                        DistinctCharacterisc = c.String(),
+                        URLPic = c.String(),
+                        URLInfo = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -104,7 +112,7 @@ namespace FinalProject.Web.Migrations
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Bugs");
+            DropTable("dbo.Pests");
         }
     }
 }
