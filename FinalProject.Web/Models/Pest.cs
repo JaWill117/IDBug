@@ -40,5 +40,5 @@ namespace FinalProject.Web.Models
         Grey = 64,
         yellow = 128,
     }
-}
+}   
 
