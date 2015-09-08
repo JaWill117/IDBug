@@ -24,7 +24,7 @@ namespace FinalProject.Web.Models
 
     public enum MajorCategory
     {
-        Arachids,
+        Arachnids,
         Insects,
         Rodents
     }

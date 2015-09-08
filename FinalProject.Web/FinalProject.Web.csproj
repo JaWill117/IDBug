@@ -186,6 +186,16 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Ant.jpg" />
+    <Content Include="Content\Images\Beetle.jpg" />
+    <Content Include="Content\Images\EatingBug.jpg" />
+    <Content Include="Content\Images\Hornet.jpg" />
+    <Content Include="Content\Images\LargeBeetle.jpg" />
+    <Content Include="Content\Images\Orkin.png" />
+    <Content Include="Content\Images\Rat1.jpg" />
+    <Content Include="Content\Images\Spider.jpg" />
+    <Content Include="Content\Images\Spider1.jpg" />
+    <Content Include="Content\Images\voodoowasp.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -218,13 +228,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Pests\Create.cshtml" />
     <Content Include="Views\Pests\Delete.cshtml" />
     <Content Include="Views\Pests\Details.cshtml" />
     <Content Include="Views\Pests\Edit.cshtml" />
     <Content Include="Views\Pests\Index.cshtml" />
+    <Content Include="Views\Pests\HomePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

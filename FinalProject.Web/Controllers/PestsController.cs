@@ -14,6 +14,11 @@ namespace FinalProject.Web.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        public ActionResult HomePage()
+        {
+            return View();
+        }
+
         // GET: Pests
         public ActionResult Index()
         {
