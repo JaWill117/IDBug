@@ -8,20 +8,36 @@ namespace FinalProject.Web.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.Answers",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Text = c.String(),
+                        ParentQuestion_Id = c.Int(nullable: false),
+                        NextQuestion_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Questions", t => t.ParentQuestion_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Questions", t => t.NextQuestion_Id)
+                .Index(t => t.ParentQuestion_Id)
+                .Index(t => t.NextQuestion_Id);
+            
+            CreateTable(
                 "dbo.Pests",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         PestName = c.String(),
-                        Category = c.Int(nullable: false),
-                        NumberOfLegs = c.Int(nullable: false),
-                        Tail = c.Boolean(nullable: false),
-                        BigAbdomen = c.Boolean(nullable: false),
-                        Hair = c.Boolean(nullable: false),
-                        Color = c.Int(nullable: false),
-                        DistinctCharacterisc = c.String(),
-                        URLPic = c.String(),
-                        URLInfo = c.String(),
+                        Description = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Questions",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Text = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -93,6 +109,19 @@ namespace FinalProject.Web.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
+            CreateTable(
+                "dbo.PestAnswers",
+                c => new
+                    {
+                        Pest_Id = c.Int(nullable: false),
+                        Answer_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.Pest_Id, t.Answer_Id })
+                .ForeignKey("dbo.Pests", t => t.Pest_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Answers", t => t.Answer_Id, cascadeDelete: true)
+                .Index(t => t.Pest_Id)
+                .Index(t => t.Answer_Id);
+            
         }
         
         public override void Down()
@@ -101,18 +130,29 @@ namespace FinalProject.Web.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Answers", "NextQuestion_Id", "dbo.Questions");
+            DropForeignKey("dbo.Answers", "ParentQuestion_Id", "dbo.Questions");
+            DropForeignKey("dbo.PestAnswers", "Answer_Id", "dbo.Answers");
+            DropForeignKey("dbo.PestAnswers", "Pest_Id", "dbo.Pests");
+            DropIndex("dbo.PestAnswers", new[] { "Answer_Id" });
+            DropIndex("dbo.PestAnswers", new[] { "Pest_Id" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Answers", new[] { "NextQuestion_Id" });
+            DropIndex("dbo.Answers", new[] { "ParentQuestion_Id" });
+            DropTable("dbo.PestAnswers");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Questions");
             DropTable("dbo.Pests");
+            DropTable("dbo.Answers");
         }
     }
 }

@@ -30,6 +30,18 @@ namespace FinalProject.Web.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<FinalProject.Web.Models.Pest> Pests { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+
+            modelBuilder.Entity<Question>().HasMany(x => x.Answers).WithRequired(x => x.ParentQuestion);
+            modelBuilder.Entity<Question>().HasMany(x => x.LeadingAnswers).WithOptional(x => x.NextQuestion);
+
+
+            base.OnModelCreating(modelBuilder);
+        }
+
+        public DbSet<Pest> Pests { get; set; }
+        public DbSet<Question>  Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
     }
 }

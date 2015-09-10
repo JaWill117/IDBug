@@ -2,6 +2,7 @@ namespace FinalProject.Web.Migrations
 {
     using Models;
     using System;
+    using System.Collections.ObjectModel;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -27,11 +28,14 @@ namespace FinalProject.Web.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            var norwayRat = new Pest { PestName = "Norway Rat" };
+            var roofRat = new Pest { PestName = "Roof Rat" };
             context.Pests.AddOrUpdate(
                 p => p.PestName,
-                new Pest { PestName = "Grass Spider", NumberOfLegs = 8, URLPic = "http://www.spiders.us/files/agelenopsis-spp-1.jpg", URLInfo = "http://www.spiders.us/species/agelenopsis-spp/" },
-                new Pest { PestName = "Black and Yellow Garden Spider", NumberOfLegs = 8, URLPic = "http://www.spiders.us/files/argiope-aurantia-1.jpg", URLInfo = "http://www.spiders.us/species/argiope-aurantia/" },
-                new Pest { PestName = "Black Widow Spider", NumberOfLegs = 8, URLPic = "http://www.spiders.us/files/latrodectus-mactans-1.jpg", URLInfo = "http://www.spiders.us/species/latrodectus-mactans/" },
+                new Pest { PestName = "Grass Spider" },
+                new Pest { PestName = "Black and Yellow Garden Spider" },
+                new Pest { PestName = "Black Widow Spider" },
                 new Pest { PestName = "Brown Recluse Spider" },
                 new Pest { PestName = "Wolf Spider" },
                 new Pest { PestName = "House Spider" },
@@ -47,11 +51,36 @@ namespace FinalProject.Web.Migrations
                 new Pest { PestName = "Weeval" },
                 new Pest { PestName = "Saw Tooth Grain Beetle" },
                 new Pest { PestName = "Larger Cabinet Beetle" },
-                new Pest { PestName = "Norway Rat" },
-                new Pest { PestName = "Roof Rat" },
+                norwayRat,
+                roofRat,
                 new Pest { PestName = "Mouse" }
 
                 );
+
+
+            var firstQuestion = new Question { Text = "How many legs?" };
+
+            var rats = new Collection<Pest>() { norwayRat, roofRat };
+            firstQuestion.Answers = new Collection<Answer>()
+            {
+                new Answer() { Text = "4", AssociatedPest = rats }
+            };
+
+
+            var secondQuestion = new Question
+            {
+                Text = "Is it Big or Small?",
+                Answers = new Collection<Answer> { new Answer() { Text = "Big" }, new Answer() { Text = "Small" } }
+            };
+
+            context.Questions.AddOrUpdate(p => p.Text,
+                firstQuestion,
+             secondQuestion
+                );
+
+
+            context.SaveChanges();
+
         }
 
     }
