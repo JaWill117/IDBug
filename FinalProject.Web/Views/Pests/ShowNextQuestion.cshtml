@@ -1,33 +1,24 @@
-﻿@model IEnumerable<FinalProject.Web.Models.Question>
+﻿@model FinalProject.Web.Models.QuestionViewModel
 
 @{
-    ViewBag.Title = "ShowNextQuestion";
+    ViewBag.Title = "Figure Out Bug";
 }
 
-<h2>ShowNextQuestion</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Text)
-        </th>
-        <th></th>
-    </tr>
+<h2>@Model.QuestionText</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Text)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+@using (Html.BeginForm())
+{
+@Html.HiddenFor(x => x.QuestionText)
+
+foreach (var ans in Model.Answers)
+{
+    <div class="radio">
+        <label>
+            <input type="radio" name="SelectedAnswer" id="answers(@ans.Key)" value="@ans.Key" />
+            @ans.Value
+        </label>
+    </div>
 }
-
-</table>
+<input type="submit" value="next Question >" class="btn btn-primary" />
+}

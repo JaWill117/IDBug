@@ -4,36 +4,6 @@
     ViewBag.Title = "HomePage";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>Carousel Template for Bootstrap</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
-</head>
-
-<body>
 
     <!-- Carousel
     ================================================== -->
@@ -97,19 +67,19 @@
                 <img class="img-circle" src="~/Content/Images/Spider.jpg" alt="Generic placeholder image" width="140" height="140">
                 <h2>Arachnids</h2>
                 <p>Arachnids are a class of joint-legged invertebrate animals (arthropods). Arachnids can include spiders, scorpians, and ticks. To help identify type of arachnid, please click below</p>
-                <p><a class="btn btn-primary" href="#" role="button">Identifier</a></p>
+                <p><a class="btn btn-primary" href="@Url.Action("ShowNextQuestion")" role="button">Identifier</a></p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4 text-center">
                 <img class="img-circle" src="~/Content/Images/Ant.jpg" alt="Generic placeholder image" width="140" height="140">
                 <h2>Insects</h2>
                 <p>Insects are a class of invertebrates within the arthropod phylum that have a chitinous exoskeleton, a three-part body (head, thorax and abdomen), three pairs of jointed legs, compound eyes and one pair of antennae. The number of extant species is estimated at between six and ten million. Please click below to to identify your insect.</p>
-                <p><a class="btn btn-primary" href="#" role="button">Identifier</a></p>
+                <p><a class="btn btn-primary" href="@Url.Action("ShowNextQuestion")" role="button">Identifier</a></p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4 text-center">
                 <img class="img-circle" src="~/Content/Images/Rat1.jpg" alt="Generic placeholder image" width="140" height="140">
                 <h2>Rodents</h2>
                 <p>Rodents are characterized by a single pair of unremittingly growing incisors in each of the upper and lower jaws. Most rodents are small animals with robust bodies, short limbs and long tails. Please click below to identify your rodent.</p>
-                <p><a class="btn btn-primary" href="#" role="button">Identifier</a></p>
+                <p><a class="btn btn-primary" href="@Url.Action("ShowNextQuestion")" role="button">Identifier</a></p>
             </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
         <!-- START THE FEATURETTES -->
@@ -154,20 +124,7 @@
 
         <!-- /END THE FEATURETTES -->
        
-    </div><!-- /.container -->
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
-
-</body>
-</html>
 
 
 @section scripts {

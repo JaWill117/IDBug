@@ -41,9 +41,9 @@ namespace FinalProject.Web.Controllers
             var model = new QuestionViewModel();
             model.QuestionId = question.Id;
             model.QuestionText = question.Text;
-           // model.Answers = question.Answers.Select(a => new KeyValuePair(a.Id, a.Text));
+            model.Answers = question.Answers.ToDictionary(x=>x.Id, x=>x.Text);
 
-            return View();
+            return View(model);
         }
 
         [HttpPost]
@@ -168,30 +168,6 @@ namespace FinalProject.Web.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        public class QuestionViewModel
-        {
-            public QuestionViewModel()
-            {
-                
-            }
-
-            public object Answers { get; internal set; }
-            public int QuestionId { get; internal set; }
-            public string QuestionText { get; internal set; }
-        }
-
-        public class KeyValuePair
-        {
-            public int id;
-            public string text;
-
-            public KeyValuePair(int id, string text)
-            {
-                this.id = id;
-                this.text = text;
-            }
         }
     }
 }
