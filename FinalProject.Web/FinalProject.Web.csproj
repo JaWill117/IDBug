@@ -234,6 +234,7 @@
     <Content Include="Views\Pests\Edit.cshtml" />
     <Content Include="Views\Pests\Index.cshtml" />
     <Content Include="Views\Pests\HomePage.cshtml" />
+    <Content Include="Views\Pests\ShowNextQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

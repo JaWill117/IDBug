@@ -31,6 +31,7 @@ namespace FinalProject.Web.Migrations
 
             var norwayRat = new Pest { PestName = "Norway Rat" };
             var roofRat = new Pest { PestName = "Roof Rat" };
+            var mouse = new Pest { PestName = "Mouse" };
             context.Pests.AddOrUpdate(
                 p => p.PestName,
                 new Pest { PestName = "Grass Spider" },
@@ -53,14 +54,14 @@ namespace FinalProject.Web.Migrations
                 new Pest { PestName = "Larger Cabinet Beetle" },
                 norwayRat,
                 roofRat,
-                new Pest { PestName = "Mouse" }
+                mouse
 
                 );
 
 
             var firstQuestion = new Question { Text = "How many legs?" };
 
-            var rats = new Collection<Pest>() { norwayRat, roofRat };
+            var rats = new Collection<Pest>() { norwayRat, roofRat, mouse };
             firstQuestion.Answers = new Collection<Answer>()
             {
                 new Answer() { Text = "4", AssociatedPest = rats }
@@ -70,12 +71,25 @@ namespace FinalProject.Web.Migrations
             var secondQuestion = new Question
             {
                 Text = "Is it Big or Small?",
-                Answers = new Collection<Answer> { new Answer() { Text = "Big" }, new Answer() { Text = "Small" } }
+                Answers = new Collection<Answer> {
+                    new Answer() { Text = "Big",AssociatedPest = new Collection<Pest>() { norwayRat} },
+                    new Answer() { Text = "Small", AssociatedPest = new Collection<Pest>() { roofRat, mouse }}
+                }
+            };
+
+            var thirdQuestion = new Question
+            {
+                Text = "Where was it located?",
+                Answers = new Collection<Answer> {
+                    new Answer() { Text = "Roof or Tree", AssociatedPest = new Collection<Pest>() { roofRat } },
+                    new Answer() { Text = "In or Around House", AssociatedPest = new Collection<Pest>() { mouse }}
+            }
             };
 
             context.Questions.AddOrUpdate(p => p.Text,
                 firstQuestion,
-             secondQuestion
+             secondQuestion,
+             thirdQuestion
                 );
 
 

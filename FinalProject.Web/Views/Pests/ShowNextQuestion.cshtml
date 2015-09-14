@@ -1,32 +1,26 @@
-﻿@model IEnumerable<FinalProject.Web.Models.Pest>
+﻿@model IEnumerable<FinalProject.Web.Models.Question>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ShowNextQuestion";
 }
 
-<h2>I.D.Bug</h2>
+<h2>ShowNextQuestion</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-      
         <th>
-            @Html.DisplayNameFor(model => model.PestName)
+            @Html.DisplayNameFor(model => model.Text)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.PestName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @Html.DisplayFor(modelItem => item.Text)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
@@ -37,4 +31,3 @@
 }
 
 </table>
- 
