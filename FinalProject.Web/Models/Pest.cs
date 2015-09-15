@@ -9,6 +9,7 @@ namespace FinalProject.Web.Models
     {
 
         public Dictionary<int, string> Answers { get; internal set; }
+        public int NumberOfResults { get; internal set; }
         public int QuestionId { get; internal set; }
         public string QuestionText { get; internal set; }
         public int SelectedAnswerId { get; set; }
@@ -45,7 +46,7 @@ namespace FinalProject.Web.Models
         public int  Id { get; set; }
         public string Text { get; set; }
         public virtual Question NextQuestion { get; set; }
-        public virtual Question ParentQuestion { get; set; }
+        public virtual  Question ParentQuestion { get; set; }
 
         public virtual ICollection<Pest> AssociatedPest { get; set; }
     }

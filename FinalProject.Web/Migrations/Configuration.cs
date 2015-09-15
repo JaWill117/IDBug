@@ -57,6 +57,7 @@ namespace FinalProject.Web.Migrations
                 mouse
 
                 );
+            
 
 
             var firstQuestion = new Question { Text = "How many legs?" };
@@ -88,8 +89,8 @@ namespace FinalProject.Web.Migrations
 
             context.Questions.AddOrUpdate(p => p.Text,
                 firstQuestion,
-             secondQuestion,
-             thirdQuestion
+                secondQuestion,
+                thirdQuestion
                 );
 
 

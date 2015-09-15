@@ -3,22 +3,28 @@
 @{
     ViewBag.Title = "Figure Out Bug";
 }
-
+    
 
 <h2>@Model.QuestionText</h2>
 
+<h4>Testing: Matching @Model.NumberOfResults pests.</h4>
 @using (Html.BeginForm())
 {
 @Html.HiddenFor(x => x.QuestionText)
 
 foreach (var ans in Model.Answers)
 {
-    <div class="radio">
+    <div class="radio" >
         <label>
             <input type="radio" name="SelectedAnswer" id="answers(@ans.Key)" value="@ans.Key" />
             @ans.Value
         </label>
     </div>
 }
-<input type="submit" value="next Question >" class="btn btn-primary" />
+<input type="submit" value="Next Question >" class="btn btn-primary"/>
 }
+
+<br />
+<br />
+
+@Html.ActionLink("Start Over", "StartOver")

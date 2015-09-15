@@ -14,6 +14,14 @@ namespace FinalProject.Web.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+
+        public ActionResult StartOver()
+        {
+            Session["CurrentQuestionId"] = null;
+            Session["AllAnswers"] = null;
+
+            return Redirect("ShowNextQuestion");
+        }
         public ActionResult HomePage()
         {
             return View();
@@ -22,11 +30,32 @@ namespace FinalProject.Web.Controllers
         [HttpGet]
         public ActionResult ShowNextQuestion()
         {
-
             //grab the question id out of the session, if it's not set assume question id of 1
             //then find that question in the db
             //create the view model to dispaly the question and answer to the user.
 
+            int questionId = GetQuestionId();
+            var question = db.Questions.Find(questionId);
+
+            var model = new QuestionViewModel();
+            model.QuestionId = question.Id;
+            model.QuestionText = question.Text;
+            model.Answers = question.Answers.ToDictionary(x => x.Id, x => x.Text);
+
+            model.NumberOfResults = GetPestsThatMatchAnswers();
+            return View(model);
+        }
+
+        private int GetPestsThatMatchAnswers()
+        {
+            var answerIds = GetAnswers();
+
+            var pests = db.Pests.Where(x => x.PestAnswers.Any(pa => answerIds.Contains(pa.Id)));
+            return pests.Count();
+        }
+
+        private int GetQuestionId()
+        {
             int questionId = 1;
             if (Session["CurrentQuestionId"] != null)
             {
@@ -36,15 +65,19 @@ namespace FinalProject.Web.Controllers
             {
                 Session["CurrentQuestionId"] = 1;
             }
-            var question = db.Questions.Find(questionId);
 
-            var model = new QuestionViewModel();
-            model.QuestionId = question.Id;
-            model.QuestionText = question.Text;
-            model.Answers = question.Answers.ToDictionary(x=>x.Id, x=>x.Text);
-
-            return View(model);
+            return questionId;
         }
+
+        //public List<Answer> GetAnswers()
+        //{
+
+        //    List<int> AnswerIds = (List<int>)Session["AllAnswers"];
+        //    db.Answers.Include(x=>x.AssociatedPest).Where(x => AnswerIds.Contains(x.Id));
+        //    Answers.Select(x => x.AssociatedPest).ToList();
+        //    return(Answers);
+        //}
+
 
         [HttpPost]
         public ActionResult ShowNextQuestion(int SelectedAnswer)
@@ -55,9 +88,30 @@ namespace FinalProject.Web.Controllers
             //redirect them back to ShowNextQuestion
             Session["CurrentQuestionId"] = db.Answers.Find(SelectedAnswer).NextQuestion.Id;
 
-            //if the answer's next question is null then redirect them to a results page or something
+            StoreAnswer(SelectedAnswer);//if the answer's next question is null then redirect them to a results page or something
+
             return RedirectToAction("ShowNextQuestion");
         }
+
+        private List<int> GetAnswers()
+        {
+            List<int> AnswerIds = (List<int>)Session["AllAnswers"];
+            if (AnswerIds == null)
+                AnswerIds = new List<int>();
+
+            return AnswerIds;
+        }
+
+        private void StoreAnswer(int SelectedAnswer)
+        {
+            List<int> AnswerIds = (List<int>)Session["AllAnswers"];
+            if (AnswerIds == null)
+                AnswerIds = new List<int>();
+
+            AnswerIds.Add(SelectedAnswer);
+            Session["AllAnswers"] = AnswerIds;
+        }
+
 
 
         // GET: Pests
