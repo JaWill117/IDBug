@@ -112,6 +112,10 @@ namespace FinalProject.Web.Controllers
             Session["AllAnswers"] = AnswerIds;
         }
 
+        public ActionResult FinalAnswer()
+        {
+            return View();
+        }
 
 
         // GET: Pests
