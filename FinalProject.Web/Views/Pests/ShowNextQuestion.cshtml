@@ -12,15 +12,15 @@
 {
 @Html.HiddenFor(x => x.QuestionText)
 
-foreach (var ans in Model.Answers)
-{
+    foreach (var ans in Model.Answers)
+    {
     <div class="radio" >
         <label>
             <input type="radio" name="SelectedAnswer" id="answers(@ans.Key)" value="@ans.Key" />
-            @ans.Value
+@ans.Value
         </label>
     </div>
-}
+    }
 <input type="submit" value="Next Question >" class="btn btn-primary"/>
 }
 

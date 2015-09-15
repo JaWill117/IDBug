@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -40,7 +41,7 @@ namespace FinalProject.Web.Models
         public virtual ICollection<Answer> Answers { get; set; }
         public virtual ICollection<Answer> LeadingAnswers { get; set; }
     }
-
+    
     public class Answer
     {
         public int  Id { get; set; }

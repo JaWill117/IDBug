@@ -80,18 +80,24 @@ namespace FinalProject.Web.Controllers
 
 
         [HttpPost]
-        public ActionResult ShowNextQuestion(int SelectedAnswer)
+        public ActionResult ShowNextQuestion(int? SelectedAnswer)
         {
+            if (SelectedAnswer == null)
+            {
+                return RedirectToAction("ShowNextQuestion");
+            }
 
             //SelectedAnswer is the id of the answer they selected. Find it and find that answer's next question id .
             //also store the selected answer in the session
             //redirect them back to ShowNextQuestion
             Session["CurrentQuestionId"] = db.Answers.Find(SelectedAnswer).NextQuestion.Id;
 
-            StoreAnswer(SelectedAnswer);//if the answer's next question is null then redirect them to a results page or something
+            StoreAnswer(SelectedAnswer.Value);//if the answer's next question is null then redirect them to a results page or something
 
             return RedirectToAction("ShowNextQuestion");
-        }
+        
+    }
+
 
         private List<int> GetAnswers()
         {
@@ -114,6 +120,7 @@ namespace FinalProject.Web.Controllers
 
         public ActionResult FinalAnswer()
         {
+          
             return View();
         }
 
