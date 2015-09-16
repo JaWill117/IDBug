@@ -199,8 +199,10 @@
     <Content Include="Content\Images\EatingBug.jpg" />
     <Content Include="Content\Images\Hornet.jpg" />
     <Content Include="Content\Images\LargeBeetle.jpg" />
+    <Content Include="Content\Images\Pests\mouse.jpg" />
     <Content Include="Content\Images\Pests\norway_rat.jpg" />
     <Content Include="Content\Images\Orkin.png" />
+    <Content Include="Content\Images\Pests\roof_rat.jpg" />
     <Content Include="Content\Images\Rat1.jpg" />
     <Content Include="Content\Images\Spider.jpg" />
     <Content Include="Content\Images\Spider1.jpg" />
