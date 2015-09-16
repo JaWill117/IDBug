@@ -20,6 +20,7 @@ namespace FinalProject.Web.Models
     {
         public int Id { get; set; }
         public string PestName { get; set; }
+        public string Pic { get; set; }
         public string Description { get; set; }
 
         public ICollection<Answer> PestAnswers { get; set; }

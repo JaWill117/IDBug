@@ -27,6 +27,14 @@ namespace FinalProject.Web.Controllers
             return View();
         }
 
+        public ActionResult Results()
+        {
+            var answerIds = GetAnswers();
+
+            var pests = db.Pests.Where(x => x.PestAnswers.Any(pa => answerIds.Contains(pa.Id)));
+            return View(pests);
+        }
+
         [HttpGet]
         public ActionResult ShowNextQuestion()
         {
@@ -87,16 +95,22 @@ namespace FinalProject.Web.Controllers
                 return RedirectToAction("ShowNextQuestion");
             }
 
+            StoreAnswer(SelectedAnswer.Value);//if the answer's next question is null then redirect them to a results page or something
+
+
             //SelectedAnswer is the id of the answer they selected. Find it and find that answer's next question id .
             //also store the selected answer in the session
             //redirect them back to ShowNextQuestion
-            Session["CurrentQuestionId"] = db.Answers.Find(SelectedAnswer).NextQuestion.Id;
+            var nextquestion = db.Answers.Find(SelectedAnswer).NextQuestion;
 
-            StoreAnswer(SelectedAnswer.Value);//if the answer's next question is null then redirect them to a results page or something
+            if (nextquestion == null)
+            {
+               return RedirectToAction("Results");
+            }
 
+            Session["CurrentQuestionId"] = nextquestion.Id;
             return RedirectToAction("ShowNextQuestion");
-        
-    }
+        }
 
 
         private List<int> GetAnswers()
@@ -118,11 +132,6 @@ namespace FinalProject.Web.Controllers
             Session["AllAnswers"] = AnswerIds;
         }
 
-        public ActionResult FinalAnswer()
-        {
-          
-            return View();
-        }
 
 
         // GET: Pests

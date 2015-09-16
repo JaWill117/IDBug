@@ -177,6 +177,14 @@
     <Compile Include="Migrations\201509101706294_Initial.Designer.cs">
       <DependentUpon>201509101706294_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201509161626382_Pic.cs" />
+    <Compile Include="Migrations\201509161626382_Pic.Designer.cs">
+      <DependentUpon>201509161626382_Pic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201509161643103_PicString.cs" />
+    <Compile Include="Migrations\201509161643103_PicString.Designer.cs">
+      <DependentUpon>201509161643103_PicString.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Pest.cs" />
@@ -191,6 +199,7 @@
     <Content Include="Content\Images\EatingBug.jpg" />
     <Content Include="Content\Images\Hornet.jpg" />
     <Content Include="Content\Images\LargeBeetle.jpg" />
+    <Content Include="Content\Images\Pests\norway_rat.jpg" />
     <Content Include="Content\Images\Orkin.png" />
     <Content Include="Content\Images\Rat1.jpg" />
     <Content Include="Content\Images\Spider.jpg" />
@@ -235,7 +244,7 @@
     <Content Include="Views\Pests\Index.cshtml" />
     <Content Include="Views\Pests\HomePage.cshtml" />
     <Content Include="Views\Pests\ShowNextQuestion.cshtml" />
-    <Content Include="Views\Pests\FinalAnswer.cshtml" />
+    <Content Include="Views\Pests\Results.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -252,6 +261,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201509101706294_Initial.resx">
       <DependentUpon>201509101706294_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509161626382_Pic.resx">
+      <DependentUpon>201509161626382_Pic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509161643103_PicString.resx">
+      <DependentUpon>201509161643103_PicString.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

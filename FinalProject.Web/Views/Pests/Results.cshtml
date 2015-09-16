@@ -1,0 +1,20 @@
+﻿@model IEnumerable<FinalProject.Web.Models.Pest>
+
+@{
+    ViewBag.Title = "Pest Results";
+}
+
+<h2>Pest Results</h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="pestresult col-sm-4">
+            <img class="img-thumbnail" src="@string.Format("/content/images/pests/{0}",@item.Pic)" />
+            <b>@item.PestName</b>
+            <br />
+            @item.Description
+        </div>
+        
+    }   
+</div>

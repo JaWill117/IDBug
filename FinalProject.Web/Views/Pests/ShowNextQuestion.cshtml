@@ -7,7 +7,7 @@
 
 <h2>@Model.QuestionText</h2>
 
-<h4>Testing: Matching @Model.NumberOfResults pests.</h4>
+<h4>Testing: Matching @Model.NumberOfResults pests. @*@Html.ActionLink("Show Results", "Results")*@</h4>
 @using (Html.BeginForm())
 {
 @Html.HiddenFor(x => x.QuestionText)
