@@ -220,6 +220,7 @@
     <Content Include="Content\Images\Pests\roof_rat.jpg" />
     <Content Include="Content\Images\Pests\sawtoothedGrainBeetle.jpg" />
     <Content Include="Content\Images\Pests\smokyBrownRoach.jpg" />
+    <Content Include="Content\Images\Pests\stripedBarkScorpion.jpg" />
     <Content Include="Content\Images\Pests\velvetAnt.jpg" />
     <Content Include="Content\Images\Pests\wolfSpider.jpg" />
     <Content Include="Content\Images\Rat1.jpg" />

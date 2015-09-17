@@ -11,11 +11,16 @@
     {
         <div class="pestresult col-sm-4">
             <img class="img-thumbnail" src="@string.Format("/content/images/pests/{0}",@item.Pic)" />
+            <br />
+            <br />
+            <div class="nameUnder">
             <b>@item.PestName</b>
+             </div>
             <br />
             @item.Description
         </div>
         
     }   
 </div>
+
 @Html.ActionLink("Start Over", "StartOver")
