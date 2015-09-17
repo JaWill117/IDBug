@@ -169,6 +169,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\PestsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -199,10 +200,28 @@
     <Content Include="Content\Images\EatingBug.jpg" />
     <Content Include="Content\Images\Hornet.jpg" />
     <Content Include="Content\Images\LargeBeetle.jpg" />
+    <Content Include="Content\Images\Pests\americanRoach.jpg" />
+    <Content Include="Content\Images\Pests\beetleCabinet.jpg" />
+    <Content Include="Content\Images\Pests\blackwidowspider.jpg" />
+    <Content Include="Content\Images\Pests\blackyellowspider.jpg" />
+    <Content Include="Content\Images\Pests\brownRecluse.jpg" />
+    <Content Include="Content\Images\Pests\carpenterAnt.jpg" />
+    <Content Include="Content\Images\Pests\crazyAnt.jpg" />
+    <Content Include="Content\Images\Pests\fireAnt.jpg" />
+    <Content Include="Content\Images\Pests\germanRoach.jpg" />
+    <Content Include="Content\Images\Pests\granaryWeevil.jpg" />
+    <Content Include="Content\Images\Pests\grassspider.jpg" />
+    <Content Include="Content\Images\Pests\houseSpider.jpg" />
+    <Content Include="Content\Images\Pests\littleBlackAnt.jpg" />
+    <Content Include="Content\Images\Pests\mealMoth.jpg" />
     <Content Include="Content\Images\Pests\mouse.jpg" />
     <Content Include="Content\Images\Pests\norway_rat.jpg" />
     <Content Include="Content\Images\Orkin.png" />
     <Content Include="Content\Images\Pests\roof_rat.jpg" />
+    <Content Include="Content\Images\Pests\sawtoothedGrainBeetle.jpg" />
+    <Content Include="Content\Images\Pests\smokyBrownRoach.jpg" />
+    <Content Include="Content\Images\Pests\velvetAnt.jpg" />
+    <Content Include="Content\Images\Pests\wolfSpider.jpg" />
     <Content Include="Content\Images\Rat1.jpg" />
     <Content Include="Content\Images\Spider.jpg" />
     <Content Include="Content\Images\Spider1.jpg" />
@@ -213,6 +232,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\idbug.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bug-min.js" />
     <Content Include="Content\fly-sprite.png" />
@@ -239,14 +259,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Pests\Create.cshtml" />
-    <Content Include="Views\Pests\Delete.cshtml" />
-    <Content Include="Views\Pests\Details.cshtml" />
-    <Content Include="Views\Pests\Edit.cshtml" />
-    <Content Include="Views\Pests\Index.cshtml" />
     <Content Include="Views\Pests\HomePage.cshtml" />
     <Content Include="Views\Pests\ShowNextQuestion.cshtml" />
     <Content Include="Views\Pests\Results.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
