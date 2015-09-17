@@ -23,7 +23,7 @@ namespace FinalProject.Web.Models
         public string Pic { get; set; }
         public string Description { get; set; }
 
-        public virtual ICollection<Answer> PestAnswers { get; set; }
+        public ICollection<Answer> PestAnswers { get; set; }
         //public MajorCategory Category { get; set; }
         //public string URLPic { get; set; }
         //public string URLInfo { get; set; }
