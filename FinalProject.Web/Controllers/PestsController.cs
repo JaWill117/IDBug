@@ -31,7 +31,7 @@ namespace FinalProject.Web.Controllers
         {
             var answerIds = GetAnswers();
 
-            var pests = db.Pests.Where(x => x.PestAnswers.Any(pa => answerIds.Contains(pa.Id)));
+            var pests = GetPests(answerIds).ToList();
             return View(pests);
         }
 
@@ -41,25 +41,28 @@ namespace FinalProject.Web.Controllers
             //grab the question id out of the session, if it's not set assume question id of 1
             //then find that question in the db
             //create the view model to dispaly the question and answer to the user.
-
+            var answerIds = GetAnswers();
             int questionId = GetQuestionId();
             var question = db.Questions.Find(questionId);
 
-            var model = new QuestionViewModel();
-            model.QuestionId = question.Id;
-            model.QuestionText = question.Text;
-            model.Answers = question.Answers.ToDictionary(x => x.Id, x => x.Text);
+            var model = new QuestionViewModel()
+            {
+                QuestionId = question.Id,
+                QuestionText = question.Text,
+                Answers = question.Answers.ToDictionary(x => x.Id, x => x.Text),
+                NumberOfResults = GetPests(answerIds).Count()
+            };
 
-            model.NumberOfResults = GetPestsThatMatchAnswers();
             return View(model);
         }
 
-        private int GetPestsThatMatchAnswers()
+        private IQueryable<Pest> GetPests(IEnumerable<int> answerIds)
         {
-            var answerIds = GetAnswers();
+            var numofAnswers = answerIds.Count();
+            var pests = db.Answers.Where(a => answerIds.Contains(a.Id)).SelectMany(x => x.AssociatedPest);
 
-            var pests = db.Pests.Where(x => x.PestAnswers.Any(pa => answerIds.Contains(pa.Id)));
-            return pests.Count();
+            var matches = pests.GroupBy(p => p).Where(x => x.Count() == numofAnswers).Select(x => x.Key);
+            return matches;
         }
 
         private int GetQuestionId()
@@ -105,7 +108,7 @@ namespace FinalProject.Web.Controllers
 
             if (nextquestion == null)
             {
-               return RedirectToAction("Results");
+                return RedirectToAction("Results");
             }
 
             Session["CurrentQuestionId"] = nextquestion.Id;

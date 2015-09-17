@@ -6,12 +6,14 @@
 
 <h2>Pest Results</h2>
 
+@Html.ActionLink("Start Over", "StartOver", null, new { @class = "btn btn-danger" })
+
+
 <div class="row">
     @foreach (var item in Model)
     {
         <div class="pestresult col-sm-4">
             <img class="img-thumbnail" src="@string.Format("/content/images/pests/{0}",@item.Pic)" />
-            <br />
             <br />
             <div class="nameUnder">
             <b>@item.PestName</b>
@@ -22,5 +24,3 @@
         
     }   
 </div>
-
-@Html.ActionLink("Start Over", "StartOver")
